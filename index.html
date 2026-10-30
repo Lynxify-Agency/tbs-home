@@ -1,0 +1,1128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07264f">
+<link rel="icon" href="assets/tbs-logo.png">
+<title>Total Body Submersion</title>
+<meta name="description" content="Total Body Submersion helps children and adults build confidence, learn water safety, and progress at their own pace through private, semi-private, group lessons and water aerobics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Onest:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --tile:#eef6f8;  --ink:#0a1f3d;  --ink-soft:#46607d;
+  --blue:#1d5be0;  --aqua:#62d6e8;  --navy:#07264f;  --abyss:#03162f;  --orange:#ff6b1f;  --orange-2:#e8560d;
+  --white:#ffffff;
+  --line:rgba(10,31,61,.12);
+  --line-d:rgba(255,255,255,.14);
+  --f-display:"Big Shoulders Display","Arial Narrow","Roboto Condensed",Impact,sans-serif;
+  --f-body:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r-lg:28px; --r-md:18px; --r-sm:12px;
+  --gx:max(20px, env(safe-area-inset-left,0px));
+  --gxr:max(20px, env(safe-area-inset-right,0px));
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 46' preserveAspectRatio='none'%3E%3Cpath d='M0 24 C50 4 100 4 150 24 S250 44 300 24 S350 4 400 24 V46 H0z'/%3E%3C/svg%3E");
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--tile);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:inherit}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-family:var(--f-display);font-weight:800;text-transform:uppercase;letter-spacing:.005em;text-wrap:balance}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.wrap{max-width:1280px;margin-inline:auto;padding-left:var(--gx);padding-right:var(--gxr)}
+main{position:relative;z-index:1}
+
+.h2{font-size:clamp(40px,5.2vw,78px);line-height:.9}
+.h2 em,.h1 em{font-style:normal;color:var(--blue)}
+[data-tone="dark"] .h2 em{color:var(--aqua)}
+.lede{font-size:clamp(17px,1.35vw,19px);color:var(--ink-soft);max-width:56ch}
+[data-tone="dark"] .lede{color:rgba(255,255,255,.74)}
+
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em;margin-bottom:-.06em}
+.wi{display:inline-block;will-change:transform}
+
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px 0 24px;border-radius:999px;font:600 15px/1 var(--f-body);text-decoration:none;cursor:pointer;border:0;overflow:hidden;isolation:isolate;transition:transform .4s var(--ease),background-color .3s,color .3s,box-shadow .3s;white-space:nowrap}
+.btn .ar{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.22);transition:transform .4s var(--ease)}
+.btn:hover .ar{transform:translateX(3px) rotate(-45deg)}
+.btn-orange{background:var(--orange);color:#fff;box-shadow:0 10px 30px -10px rgba(255,107,31,.7)}
+.btn-orange:hover{background:var(--orange-2)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+[data-tone="dark"] .btn-ghost,.on-dark .btn-ghost{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6)}
+[data-tone="dark"] .btn-ghost:hover,.on-dark .btn-ghost:hover{background:#fff;color:var(--navy)}
+.btn-sm{height:42px;padding:0 18px;font-size:14px}
+.btn[aria-disabled="true"]{background:#f3d9cb;color:#9a4a20;box-shadow:none;cursor:not-allowed}
+.btn .splash{position:absolute;border-radius:50%;background:rgba(255,255,255,.45);transform:scale(0);pointer-events:none;z-index:-1;animation:splash .7s ease-out forwards}
+@keyframes splash{to{transform:scale(1);opacity:0}}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+
+.nav{position:fixed;z-index:50;top:calc(env(safe-area-inset-top,0px) + 14px);left:0;right:0;padding-left:var(--gx);padding-right:var(--gxr);transition:transform .5s var(--ease)}
+.nav.hide{transform:translateY(-130%)}
+.nav-in{min-height:64px;max-width:1360px;margin-inline:auto;display:flex;align-items:center;gap:20px;padding:8px 8px 8px 18px;border-radius:999px;background:rgba(255,255,255,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 12px 40px -18px rgba(7,38,79,.45)}
+.logo{display:flex;align-items:center;flex:none}
+.logo img{height:38px;width:auto}
+.nav-links{display:flex;gap:4px;margin-left:auto}
+.nav-links a{position:relative;padding:10px 14px;font-size:15px;font-weight:500;text-decoration:none;color:var(--ink);border-radius:999px;transition:background .25s}
+.nav-links a:hover{background:rgba(29,91,224,.08)}
+.nav .btn{height:44px}
+.snd{flex:none;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px;background:rgba(7,38,79,.07);color:var(--navy);transition:background .3s}
+.snd:hover{background:rgba(7,38,79,.14)}
+.snd i{display:block;width:3px;height:14px;border-radius:2px;background:currentColor;transform-origin:center;animation:eq 1.1s ease-in-out infinite}
+.snd i:nth-child(2){animation-delay:-.3s}.snd i:nth-child(3){animation-delay:-.6s}.snd i:nth-child(4){animation-delay:-.85s}
+.snd[aria-pressed="false"] i{animation:none;transform:scaleY(.22)}
+@keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.menu-btn{display:none;margin-left:8px;width:44px;height:44px;border-radius:50%;border:0;background:var(--navy);color:#fff;cursor:pointer;place-items:center}
+.menu-btn span{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;box-shadow:0 6px 0 currentColor,0 -6px 0 currentColor}
+.sheet{position:fixed;inset:0;z-index:49;background:var(--navy);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 100px) var(--gxr) 40px var(--gx);display:flex;flex-direction:column;gap:6px;clip-path:circle(0 at calc(100% - 44px) 44px);transition:clip-path .7s var(--ease);visibility:hidden}
+.sheet.open{clip-path:circle(150% at calc(100% - 44px) 44px);visibility:visible}
+.sheet a{font:800 44px/1.05 var(--f-display);text-transform:uppercase;text-decoration:none;color:#fff}
+.sheet .btn{margin-top:24px;align-self:flex-start;font:600 15px/1 var(--f-body);text-transform:none}
+
+.hero{padding:0}
+.hero-frame{position:relative;container-type:inline-size;overflow:hidden;background:var(--navy);color:#fff;min-height:max(660px,100svh);display:flex;flex-direction:column;isolation:isolate}
+.hero-img,.water-gl{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 40%;z-index:-3}
+.water-gl{z-index:-2;opacity:0;transition:opacity .8s}
+.water-gl.ready{opacity:1}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(90deg,rgba(3,22,47,.88) 0%,rgba(3,22,47,.62) 34%,rgba(3,22,47,.05) 64%),
+  linear-gradient(0deg,rgba(3,22,47,.55) 0%,rgba(3,22,47,0) 38%)}
+.hero-content{position:relative;margin-block:auto;padding-top:calc(env(safe-area-inset-top,0px) + 120px);padding-bottom:clamp(70px,9vh,110px);padding-left:max(var(--gx),calc((100% - 1280px) / 2 + 20px));padding-right:var(--gxr);display:flex;flex-direction:column;gap:28px;width:min(100%,calc((100% - 1280px) / 2 + 820px));min-width:min(100%,780px)}
+.h1{font-size:clamp(50px,9.4cqw,132px);line-height:.84;font-weight:900}
+.h1 .line{display:block}
+.h1 em{color:var(--aqua)}
+.hero .lede{color:rgba(255,255,255,.82);max-width:48ch}
+.proof{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.avs{display:flex}
+.avs img{width:42px;height:42px;border-radius:50%;border:2px solid var(--navy);margin-left:-10px;object-fit:cover}
+.avs img:first-child{margin-left:0}
+.proof-txt{display:flex;flex-direction:column;gap:2px;padding-left:18px;border-left:1px solid rgba(255,255,255,.25)}
+.stars{display:flex;align-items:center;gap:3px;color:#ffb21f}
+.stars b{margin-left:6px;color:#fff;font:600 15px var(--f-body)}
+.proof-txt small{font-size:14px;color:rgba(255,255,255,.78)}
+
+.partners{padding-block:72px 40px}
+.partners .wrap{display:flex;align-items:center;gap:28px}
+.partners-label{flex:none;margin:0;font-size:15px;font-weight:600;color:var(--ink-soft)}
+.marquee{position:relative;flex:1;min-width:0;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-track{display:flex;gap:18px;width:max-content;animation:drift 38s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+@keyframes drift{to{transform:translateX(calc(-50% - 9px))}}
+.buoy{flex:none;height:76px;padding:12px 22px;display:grid;place-items:center;background:#fff;border-radius:16px;box-shadow:0 1px 0 rgba(7,38,79,.06),0 10px 24px -18px rgba(7,38,79,.35)}
+.buoy img{height:52px;width:auto;max-width:200px;object-fit:contain}
+
+.about{padding-block:clamp(80px,10vw,150px)}
+.about .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(36px,6vw,96px);align-items:center}
+.about-copy{display:flex;flex-direction:column;gap:26px;min-width:0}
+.checks{display:grid;gap:14px;margin-top:4px}
+.checks li{display:flex;align-items:center;gap:14px;font-weight:600}
+.drop{flex:none;width:30px;height:30px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:var(--blue);display:grid;place-items:center}
+.drop svg{transform:rotate(45deg)}
+.figure{position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3.3;max-width:100%;background:var(--navy)}
+.figure img{width:100%;height:118%;object-fit:cover;margin-top:-9%}
+.figure .cap{position:absolute;left:18px;bottom:18px;display:flex;gap:10px;align-items:center;padding:10px 16px 10px 10px;border-radius:999px;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-weight:600;font-size:14px;color:var(--ink)}
+.cap .depth-tile{font:800 15px/1 var(--f-display);background:var(--navy);color:#fff;border-radius:8px;padding:8px 8px 6px}
+
+.programs{padding-block:clamp(70px,8vw,120px) clamp(80px,10vw,140px)}
+.sec-head{display:grid;grid-template-columns:1.2fr 1fr;gap:28px 60px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.sec-head>div{display:flex;flex-direction:column;gap:20px;min-width:0}
+.sec-head .lede{justify-self:end}
+.lanes{display:grid;gap:28px}
+.lane{position:sticky;top:calc(96px + var(--i) * 18px);border-radius:var(--r-lg);overflow:hidden;transform-origin:50% 0;box-shadow:0 30px 60px -40px rgba(7,38,79,.55)}
+.lane--navy{background:var(--navy);color:#fff}
+.lane--white{background:#fff;color:var(--ink)}
+.lane-dim{position:absolute;inset:0;background:#03162f;opacity:0;pointer-events:none;z-index:3}
+.rope{height:14px;background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14'%3E%3Cg%3E%3Cellipse cx='10' cy='7' rx='9' ry='6' fill='%23ff6b1f'/%3E%3Cellipse cx='30' cy='7' rx='9' ry='6' fill='%23ff6b1f'/%3E%3Cellipse cx='50' cy='7' rx='9' ry='6' fill='%23ffffff'/%3E%3Cellipse cx='70' cy='7' rx='9' ry='6' fill='%231d5be0'/%3E%3Cellipse cx='90' cy='7' rx='9' ry='6' fill='%23ffffff'/%3E%3Cellipse cx='110' cy='7' rx='9' ry='6' fill='%231d5be0'/%3E%3C/g%3E%3C/svg%3E") repeat-x;
+  background-position-x:calc(var(--sy,0) * -.35px);margin:14px 0 0;opacity:.95}
+.lane--white .rope{filter:drop-shadow(0 1px 1px rgba(7,38,79,.25))}
+.lane-body{display:grid;grid-template-columns:1fr 1.08fr;gap:clamp(24px,4vw,56px);padding:clamp(22px,3.4vw,44px)}
+.lane:nth-child(even) .lane-media{order:-1}
+.lane-info{display:flex;flex-direction:column;justify-content:center;gap:18px;min-width:0}
+.lane-no{display:flex;align-items:flex-end;gap:12px;margin-bottom:6px}
+.lane-no b{font:900 clamp(72px,7.5vw,116px)/.8 var(--f-display);color:transparent;-webkit-text-stroke:2px var(--aqua)}
+.lane--white .lane-no b{-webkit-text-stroke-color:var(--blue)}
+.lane h3{font-size:clamp(32px,3vw,46px);line-height:.9}
+.lane-info p{opacity:.8;max-width:40ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.tags li{padding:7px 14px;border-radius:999px;font-size:13px;font-weight:500;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.lane--white .tags li{background:var(--tile);box-shadow:inset 0 0 0 1px var(--line)}
+.lane-media{display:flex;flex-direction:column;gap:12px;min-width:0}
+.lane-pic{position:relative;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/10.5;max-width:100%}
+.lane-pic img{width:100%;height:116%;object-fit:cover;margin-top:-8%}
+.enroll{display:flex;align-items:center;gap:14px;padding:10px 10px 10px 14px;border-radius:16px;background:var(--abyss);color:#fff;flex-wrap:wrap}
+.enroll .avs img{width:32px;height:32px;border-color:var(--abyss)}
+.enroll .who{display:flex;flex-direction:column;line-height:1.25;font-size:13px;flex:1;min-width:120px}
+.enroll .who .stars svg{width:13px;height:13px}
+.enroll .btn{margin-left:auto}
+
+.features{padding-block:clamp(70px,9vw,130px)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{position:relative;overflow:hidden;isolation:isolate;padding:32px 30px 34px;border-radius:var(--r-md);background:#fff;display:flex;flex-direction:column;gap:14px;min-height:280px;transition:color .5s var(--ease)}
+.feat::before{content:"";position:absolute;left:-10%;right:-10%;bottom:0;height:0;z-index:-1;background:var(--navy);transition:height .7s var(--ease);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M0 10 Q25 0 50 10 T100 10 T150 10 T200 10 V20 H0z'/%3E%3C/svg%3E") top/50% 22px repeat-x,linear-gradient(#000,#000) 0 21px/100% 100% no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M0 10 Q25 0 50 10 T100 10 T150 10 T200 10 V20 H0z'/%3E%3C/svg%3E") top/50% 22px repeat-x,linear-gradient(#000,#000) 0 21px/100% 100% no-repeat;
+  animation:surf 3s linear infinite}
+@keyframes surf{to{-webkit-mask-position:100% 0,0 21px;mask-position:100% 0,0 21px}}
+.feat:hover{color:#fff}
+.feat:hover::before{height:115%}
+.feat .ico{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;background:var(--tile);color:var(--blue);margin-bottom:auto;transition:background .5s,color .5s}
+.feat:hover .ico{background:rgba(255,255,255,.12);color:var(--aqua)}
+.feat h3{font-size:32px;line-height:.95;margin-top:28px}
+.feat p{opacity:.78}
+
+.gallery{padding-block:clamp(70px,8vw,110px)}
+.gal-pin{display:flex;flex-direction:column;justify-content:center;gap:clamp(30px,4vw,48px)}
+.gal-head{display:grid;grid-template-columns:1.25fr 1fr;gap:24px 60px;align-items:end}
+.gal-head .r{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.strip{display:flex;gap:18px;padding-left:var(--gx);width:max-content;align-items:center}
+.strip figure{margin:0;flex:none;width:clamp(220px,22vw,320px);border-radius:var(--r-md);overflow:hidden;aspect-ratio:3/4;position:relative;max-width:100%}
+.strip figure:nth-child(odd){transform:translateY(-22px)}
+.strip figure:nth-child(3n){aspect-ratio:4/5}
+.strip figure.wide{width:clamp(300px,34vw,480px);aspect-ratio:4/3}
+.strip img{width:118%;height:100%;object-fit:cover;max-width:none;margin-left:-9%}
+
+.steps{padding-block:clamp(90px,10vw,150px) clamp(40px,5vw,80px)}
+.steps .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(40px,7vw,110px);align-items:start}
+.steps-l{position:sticky;top:130px;display:flex;flex-direction:column;gap:24px}
+.steps-l .lede{max-width:38ch}
+.floor{position:relative;padding-left:64px}
+.floor-line{position:absolute;left:18px;top:10px;bottom:0;width:10px;border-radius:6px;background:rgba(0,0,0,.32)}
+.floor-line::after{content:"";position:absolute;left:-17px;right:-17px;bottom:0;height:10px;border-radius:6px;background:rgba(0,0,0,.32)}
+.floor-fill{position:absolute;left:0;top:0;width:100%;height:100%;border-radius:6px;background:linear-gradient(var(--aqua),var(--blue));transform-origin:top;transform:scaleY(var(--fill,1))}
+.floor-dot{position:absolute;left:50%;top:calc(var(--fill,1) * 100%);width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:var(--aqua);box-shadow:0 0 0 6px rgba(98,214,232,.25),0 0 30px rgba(98,214,232,.7)}
+.step-list{display:grid;gap:22px}
+.step{position:relative;padding:30px 30px 32px;border-radius:var(--r-md);background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--line-d);display:grid;gap:12px;transition:background .5s,box-shadow .5s,transform .5s var(--ease)}
+.step.on{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(98,214,232,.5)}
+.step b{position:absolute;right:26px;top:18px;font:900 72px/1 var(--f-display);color:rgba(255,255,255,.08);transition:color .5s}
+.step.on b{color:rgba(255,107,31,.9)}
+.step h3{font-size:clamp(30px,2.8vw,40px);line-height:.95;padding-right:70px}
+.step p{color:rgba(255,255,255,.74);max-width:44ch}
+
+.community{padding-block:clamp(50px,6vw,90px)}
+.community .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(36px,6vw,90px);align-items:center}
+.comm-copy{display:flex;flex-direction:column;gap:24px;min-width:0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{padding:24px 24px 22px;border-radius:var(--r-md);background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px var(--line-d);display:flex;flex-direction:column;gap:10px}
+.stat strong{font:900 clamp(56px,6vw,84px)/.85 var(--f-display);color:var(--aqua);font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:rgba(255,255,255,.72);line-height:1.45}
+
+.events{padding-block:clamp(60px,7vw,100px) clamp(70px,9vw,120px)}
+.ev-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.ev-head>div{display:flex;flex-direction:column;gap:18px;min-width:0}
+.arrows{display:flex;gap:10px}
+.arw{width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:rgba(255,255,255,.1);color:#fff;box-shadow:inset 0 0 0 1px var(--line-d);transition:background .3s,transform .3s}
+.arw:hover{background:var(--orange);transform:scale(1.06)}
+.arw:disabled{opacity:.35;cursor:default;background:rgba(255,255,255,.1);transform:none}
+.ev-track{display:flex;gap:22px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding-block:16px 44px;margin-block:-16px -44px;margin-right:calc(50% - 50vw);padding-right:calc(50vw - 50%);scrollbar-width:none}
+.ev-track::-webkit-scrollbar{display:none}
+.ev{flex:none;width:clamp(290px,36vw,470px);scroll-snap-align:start;border-radius:var(--r-lg);overflow:hidden;background:#fff;color:var(--ink);display:flex;flex-direction:column;transition:transform .5s var(--ease)}
+.ev:hover{transform:translateY(-6px)}
+.ev-pic{position:relative;aspect-ratio:16/9;overflow:hidden;max-width:100%}
+.ev-pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.ev:hover .ev-pic img{transform:scale(1.06)}
+.chip{position:absolute;right:14px;top:14px;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.94);font-size:13px;font-weight:600;color:var(--navy)}
+.ev-body{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;padding:24px 24px 26px;flex:1}
+.date{grid-row:span 3;display:flex;flex-direction:column;align-items:center;justify-content:center;width:78px;height:86px;border-radius:14px;background:var(--navy);color:#fff;line-height:1}
+.date small{font:800 15px var(--f-display);letter-spacing:.06em;color:var(--aqua)}
+.date strong{font:900 46px/1 var(--f-display)}
+.ev h3{font-size:30px;line-height:.95;align-self:end}
+.ev-body p{color:var(--ink-soft);font-size:15px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13.5px;color:var(--ink)}
+.meta span{display:inline-flex;align-items:center;gap:6px}
+.meta svg{color:var(--blue);flex:none}
+.ev .btn{grid-column:1/-1;margin-top:16px;justify-self:start}
+
+.deep{padding:0}
+.deep-frame{position:relative;overflow:hidden;background:var(--abyss);color:#fff;isolation:isolate}
+.deep-frame .hero-img,.deep-frame .water-gl{object-position:50% 50%}
+.deep-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(3,22,47,.25) 0%,rgba(3,22,47,.5) 38%,rgba(3,22,47,.93) 66%,var(--abyss) 100%)}
+.cta{padding-block:clamp(110px,13vw,190px) clamp(80px,9vw,130px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px}
+.cta .h2{font-size:clamp(48px,7vw,112px)}
+.cta .lede{color:rgba(255,255,255,.8);margin-inline:auto}
+.foot{display:grid;grid-template-columns:1.5fr .8fr 1fr 1.5fr;gap:40px;padding-block:56px 44px;border-top:1px solid var(--line-d)}
+.foot>div{min-width:0;display:flex;flex-direction:column;gap:14px}
+.foot img.wm{width:120px;height:auto}
+.foot h4{font:600 15px var(--f-body);text-transform:none;letter-spacing:0;color:#fff}
+.foot a{text-decoration:none;color:rgba(255,255,255,.82);transition:color .2s}
+.foot a:hover{color:#fff}
+.foot ul{display:grid;gap:8px}
+.foot .tag{max-width:26ch;color:rgba(255,255,255,.78)}
+.socials{display:flex;gap:10px}
+.socials a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line-d)}
+.socials a:hover{background:var(--orange);box-shadow:none}
+.contact-line{display:flex;gap:10px;align-items:flex-start;overflow-wrap:anywhere;font-size:15.5px}
+.contact-line svg{flex:none;margin-top:4px;color:var(--aqua)}
+.copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-block:22px 28px;font-size:13px;color:rgba(255,255,255,.6);border-top:1px solid var(--line-d)}
+
+
+#bubbles{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.about,.programs,.features,.steps,.community,.events{position:relative}
+.about>.wrap,.programs>.wrap,.features>.wrap,.steps>.wrap,.community>.wrap,.events>.wrap,.gallery>.gal-pin{position:relative;z-index:1}
+.caustics{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;opacity:.55;-webkit-mask:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
+.caustics i{position:absolute;left:-512px;top:-512px;width:calc(100% + 1024px);height:calc(100% + 1024px);background-image:var(--caus-a,none);background-size:512px 512px;animation:caus 34s linear infinite;will-change:transform}
+.caustics i+i{background-image:var(--caus-b,none);background-size:384px 384px;animation:caus2 23s linear infinite;opacity:.75}
+@keyframes caus{to{transform:translate(512px,512px)}}
+@keyframes caus2{from{transform:translate(384px,0)}to{transform:translate(0,384px)}}
+.rays{position:absolute;left:0;right:0;top:0;height:100%;overflow:hidden;pointer-events:none;z-index:0;-webkit-mask:linear-gradient(#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);mask:linear-gradient(#000 0%,rgba(0,0,0,.6) 50%,transparent 100%)}
+.rays::before,.rays::after{content:"";position:absolute;top:-10%;left:-25%;width:150%;height:120%;transform-origin:50% 0;filter:blur(5px);
+  background:linear-gradient(98deg,transparent 8%,rgba(170,230,255,.09) 10%,transparent 13%,transparent 24%,rgba(170,230,255,.06) 27%,transparent 31%,transparent 44%,rgba(170,230,255,.1) 46%,transparent 48.5%,transparent 61%,rgba(170,230,255,.05) 65%,transparent 70%,transparent 79%,rgba(170,230,255,.08) 81%,transparent 84%);
+  animation:sway 14s ease-in-out infinite alternate}
+.rays::after{background:linear-gradient(104deg,transparent 15%,rgba(170,230,255,.05) 18%,transparent 22%,transparent 36%,rgba(170,230,255,.08) 38%,transparent 40%,transparent 55%,rgba(170,230,255,.05) 58%,transparent 62%,transparent 88%,rgba(170,230,255,.07) 90%,transparent 93%);animation-duration:19s;animation-direction:alternate-reverse}
+@keyframes sway{from{transform:skewX(-9deg) translateX(-2%)}to{transform:skewX(7deg) translateX(2%)}}
+.surf{position:absolute;left:0;right:0;height:60px;pointer-events:none;z-index:2}
+.surf::before,.surf::after{content:"";position:absolute;left:0;right:0;bottom:0;background:var(--surf);-webkit-mask:var(--wave) 0 0/50% 100% repeat-x;mask:var(--wave) 0 0/50% 100% repeat-x}
+.surf::before{height:60px;opacity:.45;animation:tide 13s linear infinite reverse}
+.surf::after{height:44px;animation:tide 8s linear infinite}
+.surf--b{bottom:-1px}
+.surf--t{top:-1px;transform:scaleY(-1)}
+.drop-p{position:fixed;z-index:71;border-radius:50%;pointer-events:none;left:0;top:0}
+.ring{position:fixed;z-index:70;width:140px;height:140px;margin:-70px 0 0 -70px;border-radius:50%;pointer-events:none;border:2px solid var(--ring,rgba(29,91,224,.5));transform:scale(0);animation:ring 1.1s cubic-bezier(.2,.7,.3,1) forwards}
+.ring.r2{animation-delay:.12s;border-width:1px}
+@keyframes ring{to{transform:scale(1.3);opacity:0}}
+
+[data-bg]{background:linear-gradient(var(--sbg),var(--sbg2,var(--sbg)))}
+.gallery{position:relative;overflow-x:clip;overflow-y:visible}
+.gallery::before,.gallery::after{content:"";position:absolute;left:0;right:0;bottom:100%;height:46px;pointer-events:none;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 46' preserveAspectRatio='none'%3E%3Cpath d='M0 24 C50 4 100 4 150 24 S250 44 300 24 S350 4 400 24 V46 H0z'/%3E%3C/svg%3E") 0 0/50% 100% repeat-x;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 46' preserveAspectRatio='none'%3E%3Cpath d='M0 24 C50 4 100 4 150 24 S250 44 300 24 S350 4 400 24 V46 H0z'/%3E%3C/svg%3E") 0 0/50% 100% repeat-x}
+.gallery::before{background:#3d86b4;opacity:.55;height:58px;animation:tide 11s linear infinite reverse}
+.gallery::after{background:var(--sbg);animation:tide 7s linear infinite}
+@keyframes tide{to{-webkit-mask-position:100% 0;mask-position:100% 0}}
+[data-tone="dark"]{color:#fff}
+
+@media (max-width:1080px){
+  .nav-links,.nav .nav-cta{display:none}
+  .menu-btn{display:grid}
+  .snd{margin-left:auto}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .about .wrap,.community .wrap,.steps .wrap,.sec-head,.gal-head{grid-template-columns:1fr}
+  .sec-head .lede{justify-self:start}
+  .steps-l{position:static}
+  .lane-body{grid-template-columns:1fr}
+  .lane:nth-child(even) .lane-media{order:0}
+  .lane-no{margin-bottom:0}
+  .lane-no b{font-size:96px}
+  .feat-grid{grid-template-columns:1fr}
+  .feat{min-height:0}
+  .gallery .strip-wrap{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-block:30px 6px}
+  .gallery .strip-wrap::-webkit-scrollbar{display:none}
+  .strip figure{scroll-snap-align:start}
+  .strip{padding-right:var(--gxr)}
+}
+@media (max-width:760px){
+  .lane{position:relative;top:auto}
+  .hero-shade{background:linear-gradient(0deg,rgba(3,22,47,.92) 0%,rgba(3,22,47,.78) 55%,rgba(3,22,47,.35) 100%)}
+  .hero-content{padding-top:calc(env(safe-area-inset-top,0px) + 110px);padding-bottom:64px;min-width:0}
+  .partners .wrap{flex-direction:column;align-items:flex-start;gap:16px}
+  .marquee{width:100%}
+  .stats{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}
+  .ev-body{grid-template-columns:1fr}
+  .date{grid-row:auto;flex-direction:row;gap:8px;width:auto;height:auto;padding:8px 12px;justify-self:start}
+  .date strong{font-size:30px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .lane{position:relative;top:auto}
+}
+</style>
+</head>
+<body>
+
+
+<canvas id="bubbles" aria-hidden="true"></canvas>
+
+<header class="nav" id="nav">
+  <nav class="nav-in" aria-label="Main">
+    <a class="logo" href="#top" aria-label="Total Body Submersion home"><img src="assets/tbs-logo.png" alt="TBS" width="53" height="34"></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#programs">Our Services</a>
+      <a href="#events">Events</a>
+      <a href="#community">Blogs</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+    <button class="snd" id="snd" type="button" aria-pressed="true" aria-label="Sound on"><i></i><i></i><i></i><i></i></button>
+    <a class="btn btn-orange btn-sm nav-cta" href="#contact">Login</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="sheet"><span></span></button>
+  </nav>
+</header>
+<div class="sheet" id="sheet" aria-hidden="true">
+  <a href="#about">About</a>
+  <a href="#programs">Our Services</a>
+  <a href="#events">Events</a>
+  <a href="#community">Blogs</a>
+  <a href="#contact">Contact Us</a>
+  <a class="btn btn-orange" href="#contact">Login</a>
+</div>
+
+
+<main>
+<section class="hero" id="top" data-bg style="--sbg:#eef6f8;--sbg2:#eef6f8">
+    <div class="hero-frame" id="heroFrame">
+      <img class="hero-img" src="assets/hero-swimmer.jpg" alt="Swimmer surfacing mid-stroke in a pool" width="1672" height="940" fetchpriority="high">
+      <canvas class="water-gl" data-src="assets/hero-swimmer.jpg" data-pos="0.7,0.4" data-caustic="0.22" aria-hidden="true"></canvas>
+      <div class="hero-shade"></div>
+      <div class="surf surf--b" style="--surf:#eef6f8" aria-hidden="true"></div>
+      <div class="hero-content">
+        <h1 class="h1" id="heroTitle"><span class="line">Confidence</span><span class="line">starts in</span><span class="line"><em>the water</em></span></h1>
+        <p class="lede">From a first splash to stronger swimming skills, Total Body Submersion helps children and adults build confidence, learn water safety, and progress at their own pace.</p>
+        <div class="btns on-dark">
+          <a class="btn btn-orange" href="#programs">Find Your Swim Program <span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          <a class="btn btn-ghost" href="#contact">Contact Our Team</a>
+        </div>
+        <div class="proof">
+          <div class="avs"><img src="assets/av1.jpg" alt=""><img src="assets/av2.jpg" alt=""><img src="assets/av3.jpg" alt=""><img src="assets/av4.jpg" alt=""></div>
+          <div class="proof-txt">
+            <div class="stars" aria-label="Rated 4.8 out of 5"><svg width="15" height="15" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg width="15" height="15" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><b>4.8/5</b></div>
+            <small>1,200+ happy swimmers</small>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="partners" data-bg style="--sbg:#eef6f8;--sbg2:#e9f3f7" aria-label="Our partners">
+  <div class="wrap">
+    <p class="partners-label">Our partners</p>
+    <div class="marquee">
+      <div class="mq-track">
+        <div class="buoy"><img src="assets/partner-022.png" alt="Fearless Fund"></div>
+        <div class="buoy"><img src="assets/partner-024.png" alt="Goldman Sachs 10,000 Small Businesses"></div>
+        <div class="buoy"><img src="assets/partner-026.png" alt="CoBuilders"></div>
+        <div class="buoy"><img src="assets/partner-028.png" alt="Step Into Swim"></div>
+        <div class="buoy"><img src="assets/partner-030.png" alt="Jackson State University"></div>
+        <div class="buoy"><img src="assets/partner-032.png" alt="Village United"></div>
+        <div class="buoy" aria-hidden="true"><img src="assets/partner-022.png" alt=""></div>
+        <div class="buoy" aria-hidden="true"><img src="assets/partner-024.png" alt=""></div>
+        <div class="buoy" aria-hidden="true"><img src="assets/partner-026.png" alt=""></div>
+        <div class="buoy" aria-hidden="true"><img src="assets/partner-028.png" alt=""></div>
+        <div class="buoy" aria-hidden="true"><img src="assets/partner-030.png" alt=""></div>
+        <div class="buoy" aria-hidden="true"><img src="assets/partner-032.png" alt=""></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about" data-bg style="--sbg:#e9f3f7;--sbg2:#e0eff5">
+  <div class="caustics" aria-hidden="true"><i></i><i></i></div>
+  <div class="wrap">
+    <div class="about-copy">
+      <h2 class="h2 split">Helping more people feel confident in the water</h2>
+      <p class="lede" data-reveal>Total Body Submersion makes swim education welcoming, practical, and accessible. Through lessons for children and adults, we help swimmers build skills, grow their confidence, and learn to move more safely in and around water.</p>
+      <ul class="checks" data-stagger>
+        <li><span class="drop"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.3l3 3 6-6.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Personalized learning</li>
+        <li><span class="drop"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.3l3 3 6-6.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Water safety at every stage</li>
+        <li><span class="drop"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.3l3 3 6-6.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Community-centered access</li>
+      </ul>
+      <div data-reveal><a class="btn btn-orange" href="#programs">Learn More <span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+    </div>
+    <div class="figure wave-reveal" data-parallax>
+      <img src="assets/coach-kickboard.jpg" alt="TBS instructor guiding a young swimmer holding a kickboard" loading="lazy" width="1200" height="900">
+    </div>
+  </div>
+</section>
+
+<section class="programs" id="programs" data-bg style="--sbg:#e0eff5;--sbg2:#d3e9f1">
+  <div class="caustics" aria-hidden="true"><i></i><i></i></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 class="h2 split">Find the right way to learn</h2>
+      </div>
+      <p class="lede" data-reveal>Choose the format that feels right for you or your swimmer.</p>
+    </div>
+
+    <div class="lanes" id="lanes">
+      <article class="lane lane--navy" style="--i:0">
+        <div class="lane-dim"></div>
+        <div class="rope"></div>
+        <div class="lane-body">
+          <div class="lane-info">
+            <div class="lane-no"><b>01</b></div>
+            <h3>Private Lessons</h3>
+            <p>One swimmer, one instructor, and focused individual support.</p>
+            <ul class="tags"><li>1:1 Coaching</li><li>Water Confidence</li><li>Skill Building</li><li>Personalized Pace</li></ul>
+          </div>
+          <div class="lane-media">
+            <div class="lane-pic" data-parallax><img src="assets/private-lesson.jpg" alt="Instructor supporting a child swimming on their back" loading="lazy"></div>
+            <div class="enroll">
+              <div class="avs"><img src="assets/av1.jpg" alt=""><img src="assets/av2.jpg" alt=""><img src="assets/av4.jpg" alt=""></div>
+              <div class="who"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg></span>100+ kids enrolled</div>
+              <a class="btn btn-orange btn-sm" href="#contact">Join Now</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="lane lane--white" style="--i:1">
+        <div class="lane-dim"></div>
+        <div class="rope"></div>
+        <div class="lane-body">
+          <div class="lane-info">
+            <div class="lane-no"><b>02</b></div>
+            <h3>Semi-Private Lessons</h3>
+            <p>Learn alongside a friend or family member.</p>
+            <ul class="tags"><li>Learn Together</li><li>Shared Coaching</li><li>Technique Practice</li><li>Build Confidence</li></ul>
+          </div>
+          <div class="lane-media">
+            <div class="lane-pic" data-parallax><img src="assets/semi-private.jpg" alt="Two young swimmers in caps and goggles at the pool wall" loading="lazy"></div>
+            <div class="enroll">
+              <div class="avs"><img src="assets/av2.jpg" alt=""><img src="assets/av4.jpg" alt=""><img src="assets/av3.jpg" alt=""></div>
+              <div class="who"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg></span>70+ people enrolled</div>
+              <a class="btn btn-orange btn-sm" href="#contact">Join Now</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="lane lane--navy" style="--i:2">
+        <div class="lane-dim"></div>
+        <div class="rope"></div>
+        <div class="lane-body">
+          <div class="lane-info">
+            <div class="lane-no"><b>03</b></div>
+            <h3>Group Lessons</h3>
+            <p>Build skills with a small group and a shared sense of progress.</p>
+            <ul class="tags"><li>Small-Group Learning</li><li>Swim Skills</li><li>Water Safety</li><li>Progress Together</li></ul>
+          </div>
+          <div class="lane-media">
+            <div class="lane-pic" data-parallax><img src="assets/group-lesson.jpg" alt="Instructor smiling with a group of young swimmers" loading="lazy"></div>
+            <div class="enroll">
+              <div class="avs"><img src="assets/av3.jpg" alt=""><img src="assets/av1.jpg" alt=""><img src="assets/av2.jpg" alt=""></div>
+              <div class="who"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg></span>120+ people enrolled</div>
+              <a class="btn btn-orange btn-sm" href="#contact">Join Now</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="lane lane--white" style="--i:3">
+        <div class="lane-dim"></div>
+        <div class="rope"></div>
+        <div class="lane-body">
+          <div class="lane-info">
+            <div class="lane-no"><b>04</b></div>
+            <h3>Water Aerobics</h3>
+            <p>Move, build strength, and enjoy a low-impact water workout.</p>
+            <ul class="tags"><li>Low-Impact Fitness</li><li>Strength &amp; Mobility</li><li>Pool-Based Movement</li><li>All Fitness Levels</li></ul>
+          </div>
+          <div class="lane-media">
+            <div class="lane-pic" data-parallax><img src="assets/water-aerobics.jpg" alt="Outdoor water aerobics class with pool noodles" loading="lazy"></div>
+            <div class="enroll">
+              <div class="avs"><img src="assets/av3.jpg" alt=""><img src="assets/av4.jpg" alt=""><img src="assets/av1.jpg" alt=""></div>
+              <div class="who"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg></span>55+ people enrolled</div>
+              <a class="btn btn-orange btn-sm" href="#contact">Join Now</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="features" data-bg style="--sbg:#d3e9f1;--sbg2:#a9d5e6">
+  <div class="caustics" aria-hidden="true"><i></i><i></i></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 class="h2 split">More than learning strokes</h2>
+      </div>
+      <p class="lede" data-reveal>Every swimmer deserves a welcoming place to learn. TBS pairs personalized instruction with a commitment to safer, more confident communities.</p>
+    </div>
+    <div class="feat-grid" data-stagger>
+      <article class="feat">
+        <span class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="19" r="8"/><path d="M18 13h11v5h-8"/><path d="M12 11V5M8 6l4-1 4 1"/><circle cx="12" cy="19" r="2.5" fill="currentColor"/></svg></span>
+        <h3>Expert Coaching</h3>
+        <p>Learn with proven techniques and guidance from experienced swimming coaches.</p>
+      </article>
+      <article class="feat">
+        <span class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="5.5"/><path d="M7.5 7.5l4.6 4.6M24.5 7.5l-4.6 4.6M7.5 24.5l4.6-4.6M24.5 24.5l-4.6-4.6"/></svg></span>
+        <h3>Dedicated Support</h3>
+        <p>Every swimmer gets dedicated support tailored to their skill level, goals, and progress.</p>
+      </article>
+      <article class="feat">
+        <span class="ico"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 24c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M6 17l6-6 5 4 9-9"/><path d="M20 6h6v6"/></svg></span>
+        <h3>Real Progress</h3>
+        <p>Structured lessons help you improve technique, confidence, and overall performance.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="services" data-bg data-tone="dark" style="--sbg:#0d4c7c;--sbg2:#0b416f">
+  <div class="rays" aria-hidden="true"></div>
+  <div class="gal-pin" id="galPin">
+    <div class="wrap gal-head">
+      <h2 class="h2 split">Total Body Submersion is more than swim lessons</h2>
+      <div class="r">
+        <p class="lede" data-reveal>Our platform is your go-to digital solution for aquatic services, promoting water safety, and enhancing swimming education.</p>
+        <a class="btn btn-orange" href="#programs" data-reveal>View Our Services <span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+    </div>
+    <div class="strip-wrap">
+      <div class="strip" id="strip">
+        <figure><img src="assets/g-smile.jpg" alt="Smiling boy in goggles at the pool" loading="lazy"></figure>
+        <figure class="wide"><img src="assets/g-poolside.jpg" alt="Instructor coaching a swimmer from the pool deck" loading="lazy"></figure>
+        <figure><img src="assets/g-kids.jpg" alt="Group of happy kids in swim goggles" loading="lazy"></figure>
+        <figure><img src="assets/g-float.jpg" alt="Two children practicing back floats" loading="lazy"></figure>
+        <figure><img src="assets/g-breath.jpg" alt="Swimmer taking a breath during freestyle" loading="lazy"></figure>
+        <figure><img src="assets/g-underwater.jpg" alt="Swimmer gliding underwater" loading="lazy"></figure>
+        <figure class="wide"><img src="assets/g-goggles.jpg" alt="Swimmer underwater with goggles and rising bubbles" loading="lazy"></figure>
+        <figure><img src="assets/g-freestyle.jpg" alt="Child swimming freestyle along a lane line" loading="lazy"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps" id="how" data-bg data-tone="dark" style="--sbg:#0b416f;--sbg2:#08325e">
+  <div class="wrap">
+    <div class="steps-l">
+      <h2 class="h2 split">Your first lesson, made simple</h2>
+    </div>
+    <div class="floor" id="floor">
+      <div class="floor-line"><div class="floor-fill"></div><span class="floor-dot"></span></div>
+      <ol class="step-list">
+        <li class="step"><b>01</b><h3>Tell us about your swimmer</h3><p>Share their age, experience, goals, and preferred location.</p></li>
+        <li class="step"><b>02</b><h3>Compare your options</h3><p>We’ll help you compare private, semi-private, group, or other available options.</p></li>
+        <li class="step"><b>03</b><h3>Get ready to swim</h3><p>We’ll confirm current availability, pricing, and next steps.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="community" id="community" data-bg data-tone="dark" style="--sbg:#08325e;--sbg2:#062849">
+  <div class="wrap">
+    <div class="figure wave-reveal" data-parallax>
+      <img src="assets/community.jpg" alt="Families laughing together on pool floats" loading="lazy" width="1200" height="676">
+    </div>
+    <div class="comm-copy">
+      <h2 class="h2 split">Building safer, stronger communities</h2>
+      <p class="lede" data-reveal>Through local partnerships and outreach, TBS works to make swim education more accessible and support water safety beyond the pool.</p>
+      <div class="stats" data-stagger>
+        <div class="stat"><strong data-count="20">20</strong><span>Students taught through Wildlife &amp; Fisheries partnership</span></div>
+        <div class="stat"><strong data-count="84" data-prefix="$" data-suffix="K+">$84K+</strong><span>Secured in grants for community initiatives</span></div>
+      </div>
+      <div class="btns" data-reveal>
+        <a class="btn btn-orange" href="#community">See Our Community Work <span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a class="btn btn-ghost" href="#contact">Support the Mission</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="events" id="events" data-bg data-tone="dark" style="--sbg:#062849;--sbg2:#041d3a">
+  <div class="wrap">
+    <div class="ev-head">
+      <div>
+        <h2 class="h2 split">Make a splash with us</h2>
+        <p class="lede" data-reveal>Join a class, community event, or water fitness experience. See what’s coming up and get the details you need to take part.</p>
+      </div>
+      <div class="arrows">
+        <button class="arw" id="evPrev" aria-label="Previous event"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 2L1 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="arw" id="evNext" aria-label="Next event"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+    <div class="ev-track" id="evTrack" data-stagger>
+      <article class="ev">
+        <div class="ev-pic"><img src="assets/event-fitness.jpg" alt="Kids smiling in swim goggles" loading="lazy"><span class="chip">Event</span></div>
+        <div class="ev-body">
+          <div class="date"><small>JUL</small><strong>09</strong></div>
+          <h3>Dive into Fitness</h3>
+          <p>Free Water Aerobics Experience</p>
+          <div class="meta"><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5" stroke-linecap="round"/></svg>Thu • 5:30 PM</span><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15z"/><circle cx="8" cy="6.5" r="1.8"/></svg>318 Vine St</span></div>
+          <span class="btn btn-sm" aria-disabled="true">Registration Full</span>
+        </div>
+      </article>
+      <article class="ev">
+        <div class="ev-pic"><img src="assets/event-aerobics.jpg" alt="Bright indoor pool with lane lines" loading="lazy"><span class="chip">Event</span></div>
+        <div class="ev-body">
+          <div class="date"><small>JUL</small><strong>10</strong></div>
+          <h3>Free Water Aerobics</h3>
+          <p>Free 45–60 minute water aerobics workout.</p>
+          <div class="meta"><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5" stroke-linecap="round"/></svg>Thu • 5:30 PM</span><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15z"/><circle cx="8" cy="6.5" r="1.8"/></svg>318 Vine St, Jackson, MS</span></div>
+          <a class="btn btn-orange btn-sm" href="#contact">Register <span class="ar"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        </div>
+      </article>
+      <article class="ev">
+        <div class="ev-pic"><img src="assets/event-webinar.jpg" alt="Grant specialist webinar promotional graphic" loading="lazy"><span class="chip">Webinar</span></div>
+        <div class="ev-body">
+          <div class="date"><small>APR</small><strong>09</strong></div>
+          <h3>Profit Grants Webinar</h3>
+          <p>Online webinar for profit grants.</p>
+          <div class="meta"><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5" stroke-linecap="round"/></svg>Sun • 5:30 PM</span><span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="12" height="8.5" rx="1.5"/><path d="M5.5 14h5" stroke-linecap="round"/></svg>Online</span></div>
+          <a class="btn btn-orange btn-sm" href="#contact">Register <span class="ar"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="deep" id="contact" data-bg data-tone="dark" style="--sbg:#041d3a;--sbg2:#03162f">
+    <div class="deep-frame" id="deepFrame">
+      <img class="hero-img" src="assets/deep-swimmers.jpg" alt="" loading="lazy">
+      <canvas class="water-gl" data-src="assets/deep-swimmers.jpg" data-pos="0.5,0.5" data-caustic="0.3" aria-hidden="true"></canvas>
+      <div class="deep-shade"></div>
+      <div class="surf surf--t" style="--surf:#041d3a" aria-hidden="true"></div>
+      <div class="wrap">
+      <div class="cta">
+        <h2 class="h2 split">Ready to get in the water?</h2>
+        <p class="lede">Tell us what you’re looking for. We’ll help you find the right next step.</p>
+        <div class="btns on-dark" style="justify-content:center">
+          <a class="btn btn-orange" href="#programs">Find a Lesson <span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          <a class="btn btn-ghost" href="mailto:kianapauline@totalbodysubmersion.org">Contact Us</a>
+        </div>
+      </div>
+      <div class="foot">
+        <div>
+          <img class="wm" src="assets/tbs-wordmark.png" alt="Total Body Submersion" width="120" height="115">
+          <p class="tag">Swim education and water safety for our community.</p>
+          <div class="socials">
+            <a href="https://www.linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1.5" y="5.5" width="3" height="9" rx=".5"/><circle cx="3" cy="2.8" r="1.6"/><path d="M6.5 5.5h2.8v1.3c.5-.9 1.6-1.5 2.9-1.5 2 0 2.8 1.3 2.8 3.4v5.8h-3V9.3c0-1-.3-1.7-1.3-1.7s-1.4.8-1.4 1.7v5.2H6.5z"/></svg></a>
+            <a href="https://www.instagram.com" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor"/></svg></a>
+            <a href="https://www.facebook.com" aria-label="Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M9.2 15V8.7h2.1l.3-2.5H9.2V4.7c0-.7.2-1.2 1.2-1.2h1.3V1.3c-.2 0-1-.1-1.9-.1-1.9 0-3.2 1.2-3.2 3.3v1.7H4.5v2.5h2.1V15z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul><li><a href="#programs">Swim Programs</a></li><li><a href="#about">About</a></li><li><a href="#events">Events</a></li><li><a href="#community">Donate</a></li><li><a href="#community">Blogs</a></li></ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul><li><a href="#contact">Privacy Policy</a></li><li><a href="#contact">Terms and Conditions</a></li></ul>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <a class="contact-line" href="tel:+17693001094"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 1.8h3l1.3 3.4-1.8 1.2a8 8 0 0 0 4.1 4.1l1.2-1.8 3.4 1.3v3c0 .6-.5 1.2-1.2 1.2C6.8 14.2 1.8 9.2 1.8 3c0-.7.5-1.2 1.2-1.2z"/></svg>(769) 300-1094</a>
+          <a class="contact-line" href="mailto:kianapauline@totalbodysubmersion.org"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="3" width="13" height="10" rx="2"/><path d="M2 4l6 5 6-5"/></svg>kianapauline@totalbodysubmersion.org</a>
+        </div>
+      </div>
+      <div class="copy"><span>© 2026 Total Body Submersion. All rights reserved.</span></div>
+      </div>
+    </div>
+</footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(pointer: fine)').matches;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+  let scrollY = window.scrollY, velocity = 0;
+
+  const Sound = (() => {
+    const FILES = {
+      tap: ['tap-1', 'tap-2', 'tap-3', 'tap-4'],
+      splash: ['splash-1', 'splash-2'],
+      hover: ['plop-1', 'plop-2', 'bubble-1'],
+      plunge: ['plunge']
+    };
+    const GAIN = { tap: 0.32, splash: 0.5, hover: 0.12, plunge: 0.42 };
+    let ctx = null, master = null, on = true, last = {};
+    const raw = {}, buffers = {};
+    try { on = localStorage.getItem('tbs-sound') !== 'off'; } catch (e) {}
+    Object.values(FILES).flat().forEach(n => {
+      raw[n] = fetch('assets/sfx/' + n + '.mp3').then(r => r.ok ? r.arrayBuffer() : null).catch(() => null);
+    });
+    const decode = n => {
+      if (!buffers[n]) buffers[n] = raw[n].then(ab => ab ? ctx.decodeAudioData(ab.slice(0)) : null).catch(() => null);
+      return buffers[n];
+    };
+    const init = () => {
+      if (ctx) return true;
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return false;
+      ctx = new AC();
+      master = ctx.createGain(); master.gain.value = 0.9; master.connect(ctx.destination);
+      Object.keys(raw).forEach(decode);
+      return true;
+    };
+    const play = async (kind, gesture) => {
+      if (!on) return;
+      if (!ctx && !gesture) return;
+      if (!init()) return;
+      if (ctx.state === 'suspended') ctx.resume();
+      const names = FILES[kind];
+      let pick = names[Math.floor(Math.random() * names.length)];
+      if (names.length > 1 && pick === last[kind]) pick = names[(names.indexOf(pick) + 1) % names.length];
+      last[kind] = pick;
+      const buf = await decode(pick);
+      if (!buf) return;
+      const src = ctx.createBufferSource(), g = ctx.createGain();
+      src.buffer = buf;
+      src.playbackRate.value = 0.92 + Math.random() * 0.16;
+      g.gain.value = GAIN[kind] * (0.85 + Math.random() * 0.15);
+      src.connect(g); g.connect(master); src.start();
+    };
+    return {
+      tap() { play('tap', true); },
+      click() { play('tap', true); },
+      splash() { play('splash', true); },
+      bubble() { play('hover', false); },
+      plunge() { play('plunge', false); },
+      get on() { return on; },
+      set(v) { on = v; try { localStorage.setItem('tbs-sound', v ? 'on' : 'off'); } catch (e) {} if (v) play('tap', true); }
+    };
+  })();
+
+  const sndBtn = $('#snd');
+  const paintSnd = () => { sndBtn.setAttribute('aria-pressed', String(Sound.on)); sndBtn.setAttribute('aria-label', Sound.on ? 'Sound on' : 'Sound off'); };
+  paintSnd();
+  sndBtn.addEventListener('click', e => { e.stopPropagation(); Sound.set(!Sound.on); paintSnd(); });
+  addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.target.closest('#snd')) return;
+    if (e.target.closest('.btn-orange')) Sound.splash();
+    else Sound.tap();
+  }, { passive: true });
+  let lastBubble = 0;
+  $$('.btn, .arw, .feat, .ev, .lane-pic, .strip figure').forEach(el =>
+    el.addEventListener('pointerenter', e => {
+      if (e.pointerType !== 'mouse') return;
+      const n = performance.now(); if (n - lastBubble < 220) return; lastBubble = n; Sound.bubble();
+    }));
+
+  const causticTile = (size, t, rgb, amax) => {
+    const c = document.createElement('canvas'); c.width = c.height = size;
+    const x = c.getContext('2d'), img = x.createImageData(size, size), TAU = Math.PI * 2;
+    for (let j = 0; j < size; j++) for (let i = 0; i < size; i++) {
+      const px = i / size * TAU - 250, py = j / size * TAU - 250;
+      let ix = px, iy = py, v = 1;
+      for (let n = 0; n < 5; n++) {
+        const tt = t * (1 - 3.5 / (n + 1));
+        const nx = px + Math.cos(tt - ix) + Math.sin(tt + iy), ny = py + Math.sin(tt - iy) + Math.cos(tt + ix);
+        ix = nx; iy = ny;
+        v += 1 / Math.hypot(px / (Math.sin(ix + tt) / 0.005), py / (Math.cos(iy + tt) / 0.005));
+      }
+      v /= 5; v = 1.17 - Math.pow(v, 1.4); v = Math.min(1, Math.pow(Math.abs(v), 11) * 1.4);
+      const k = (j * size + i) * 4;
+      img.data[k] = rgb[0]; img.data[k + 1] = rgb[1]; img.data[k + 2] = rgb[2]; img.data[k + 3] = v * amax;
+    }
+    x.putImageData(img, 0, 0);
+    return c.toDataURL('image/png');
+  };
+  const paintCaustics = () => {
+    try {
+      const root = document.documentElement.style;
+      root.setProperty('--caus-a', `url(${causticTile(512, 7.3, [255, 255, 255], 210)})`);
+      root.setProperty('--caus-b', `url(${causticTile(384, 19.1, [60, 150, 210], 70)})`);
+    } catch (e) {}
+  };
+  (window.requestIdleCallback || (f => setTimeout(f, 300)))(paintCaustics);
+
+  let lenis = null;
+  if (hasGsap) gsap.registerPlugin(ScrollTrigger);
+  if (!reduce && typeof window.Lenis !== 'undefined') {
+    try {
+      lenis = new Lenis({ lerp: 0.085, smoothWheel: true, wheelMultiplier: 0.9 });
+      if (hasGsap) {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(t => lenis.raf(t * 1000));
+        gsap.ticker.lagSmoothing(0);
+      } else {
+        const loop = t => { lenis.raf(t); requestAnimationFrame(loop); };
+        requestAnimationFrame(loop);
+      }
+    } catch (e) { lenis = null; }
+  }
+  const scrollToTarget = (el) => {
+    if (lenis) lenis.scrollTo(el, { offset: -90, duration: 1.6 });
+    else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  };
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id.length < 2) return;
+    const el = document.querySelector(id);
+    if (!el) return;
+    e.preventDefault();
+    closeSheet();
+    scrollToTarget(el);
+  }));
+
+  const nav = $('#nav'), sheet = $('#sheet'), menuBtn = $('#menuBtn');
+  function closeSheet(){ sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); lenis && lenis.start(); }
+  menuBtn.addEventListener('click', () => {
+    const open = !sheet.classList.contains('open');
+    sheet.classList.toggle('open', open);
+    if (open) Sound.splash();
+    sheet.setAttribute('aria-hidden', String(!open));
+    menuBtn.setAttribute('aria-expanded', String(open));
+    if (lenis) open ? lenis.stop() : lenis.start();
+  });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+
+  const sections = $$('[data-bg]');
+  let tops = [];
+  const measure = () => { tops = sections.map(s => s.getBoundingClientRect().top + window.scrollY); };
+  let lastY = window.scrollY, lastIdx = -1, prevTone = '';
+  function depthTick(){
+    const y = window.scrollY, vh = innerHeight;
+    velocity = y - scrollY; scrollY = y;
+    document.documentElement.style.setProperty('--sy', y.toFixed(1));
+    let idx = 0;
+    for (let i = 0; i < tops.length; i++) if (tops[i] <= y + vh * 0.5) idx = i;
+    if (idx !== lastIdx) {
+      lastIdx = idx;
+      const dark = sections[idx].dataset.tone === 'dark';
+      document.documentElement.style.setProperty('--ring', dark ? 'rgba(150,230,245,.55)' : 'rgba(29,91,224,.45)');
+      if (prevTone === 'light' && dark && y > lastY) Sound.plunge();
+      prevTone = dark ? 'dark' : 'light';
+    }
+    const max = document.documentElement.scrollHeight - vh;
+    const p = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
+    bubbleDepth = p;
+    if (Math.abs(y - lastY) > 6) { nav.classList.toggle('hide', y > lastY && y > 300 && !sheet.classList.contains('open')); lastY = y; }
+  }
+
+  const cv = $('#bubbles'), cx = cv.getContext('2d');
+  let bubbles = [], bubbleDepth = 0, W = 0, H = 0, DPR = Math.min(devicePixelRatio || 1, 2);
+  const sizeCanvas = () => { W = innerWidth; H = innerHeight; cv.width = W * DPR; cv.height = H * DPR; cx.setTransform(DPR,0,0,DPR,0,0); };
+  sizeCanvas();
+  const spawn = (x, y, r) => bubbles.push({ x, y, r, vy: 0.35 + r * 0.09 + Math.random() * 0.4, ph: Math.random() * 6.28, sw: 0.4 + Math.random() * 0.9, life: 1 });
+  function drawBubbles(){
+    cx.clearRect(0,0,W,H);
+    const under = sections[Math.max(0,lastIdx)].dataset.tone === 'dark';
+    if (under && bubbles.length < 60 && Math.random() < 0.08 + bubbleDepth * 0.25) spawn(Math.random() * W, H + 20, 1.5 + Math.random() * (3 + bubbleDepth * 7));
+    const light = sections[Math.max(0,lastIdx)].dataset.tone !== 'dark';
+    for (let i = bubbles.length - 1; i >= 0; i--) {
+      const b = bubbles[i];
+      b.y -= b.vy + Math.max(0, -velocity) * 0.04 + Math.max(0, velocity) * -0.02;
+      b.ph += 0.03; b.x += Math.sin(b.ph) * b.sw * 0.5;
+      if (b.y < -20 || b.life <= 0) { bubbles.splice(i,1); continue; }
+      const a = Math.min(1, b.y / (H * 0.25)) * b.life;
+      cx.beginPath(); cx.arc(b.x, b.y, b.r, 0, 6.283);
+      cx.strokeStyle = light ? `rgba(29,91,224,${0.28*a})` : `rgba(190,240,250,${0.45*a})`;
+      cx.lineWidth = 1.1; cx.stroke();
+      cx.fillStyle = light ? `rgba(29,91,224,${0.05*a})` : `rgba(190,240,250,${0.07*a})`; cx.fill();
+      cx.beginPath(); cx.arc(b.x - b.r*0.35, b.y - b.r*0.35, b.r*0.28, 0, 6.283);
+      cx.fillStyle = `rgba(255,255,255,${0.7*a})`; cx.fill();
+    }
+  }
+  let lastSpawn = 0, lmx = 0, lmy = 0;
+  if (fine && !reduce) addEventListener('pointermove', e => {
+    if (sections[Math.max(0,lastIdx)].dataset.tone !== 'dark') return;
+    const now = performance.now(), d = Math.hypot(e.clientX - lmx, e.clientY - lmy);
+    if (now - lastSpawn > 45 && d > 18) { spawn(e.clientX + (Math.random()-.5)*10, e.clientY, 1.5 + Math.random()*3.5); lastSpawn = now; lmx = e.clientX; lmy = e.clientY; }
+  }, { passive: true });
+
+  if (!reduce) addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    const under = sections[Math.max(0, lastIdx)].dataset.tone === 'dark';
+    for (let k = 0; k < 8; k++) {
+      const d = document.createElement('i'), sz = 3 + Math.random() * 5;
+      d.className = 'drop-p';
+      d.style.cssText = `width:${sz}px;height:${sz}px;background:${under ? 'rgba(205,242,255,.95)' : 'rgba(29,110,224,.8)'};box-shadow:inset -1px -1px 0 rgba(255,255,255,.6)`;
+      document.body.appendChild(d);
+      const ang = -Math.PI / 2 + (Math.random() - 0.5) * 2.4, sp = 34 + Math.random() * 56;
+      const dx = Math.cos(ang) * sp, dy = Math.sin(ang) * sp, x0 = e.clientX - sz / 2, y0 = e.clientY - sz / 2;
+      const an = d.animate([
+        { transform: `translate(${x0}px,${y0}px) scale(1)`, opacity: 1 },
+        { transform: `translate(${x0 + dx}px,${y0 + dy}px) scale(1)`, opacity: 1, offset: 0.45 },
+        { transform: `translate(${x0 + dx * 1.35}px,${y0 + dy + 80}px) scale(.35)`, opacity: 0 }
+      ], { duration: 650 + Math.random() * 250, easing: 'cubic-bezier(.2,.65,.45,1)' });
+      an.onfinish = () => d.remove();
+    }
+    ['ring', 'ring r2'].forEach(c => { const r = document.createElement('span'); r.className = c; r.style.left = e.clientX + 'px'; r.style.top = e.clientY + 'px'; document.body.appendChild(r); setTimeout(() => r.remove(), 1400); });
+  }, { passive: true });
+  $$('.btn').forEach(b => b.addEventListener('pointerdown', e => {
+    const r = b.getBoundingClientRect(), s = Math.max(r.width, r.height) * 2.2, sp = document.createElement('span');
+    sp.className = 'splash'; sp.style.cssText = `width:${s}px;height:${s}px;left:${e.clientX - r.left - s/2}px;top:${e.clientY - r.top - s/2}px`;
+    b.appendChild(sp); setTimeout(() => sp.remove(), 800);
+  }));
+
+  const VS = `attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}`;
+  const FS = `precision highp float;varying vec2 v;uniform sampler2D T;uniform vec2 R,I,P;uniform float t,C;uniform vec4 Q[10];
+  vec2 cover(vec2 u){float ra=R.x/R.y,ri=I.x/I.y;vec2 s=ra>ri?vec2(1.,ri/ra):vec2(ra/ri,1.);return (u-P)*s+P;}
+  float caus(vec2 uv,float tt){vec2 p=mod(uv*6.28318,6.28318)-250.;vec2 i=p;float c=1.;float k=.005;
+    for(int n=0;n<4;n++){float q=tt*(1.-(3.5/float(n+1)));i=p+vec2(cos(q-i.x)+sin(q+i.y),sin(q-i.y)+cos(q+i.x));c+=1./length(vec2(p.x/(sin(i.x+q)/k),p.y/(cos(i.y+q)/k)));}
+    c/=4.;c=1.17-pow(c,1.4);return pow(abs(c),8.);}
+  void main(){vec2 u=v;vec2 a=vec2(R.x/R.y,1.);vec2 o=vec2(sin(u.y*16.+t*1.1),cos(u.x*12.+t*.9))*.0016;float hl=0.;
+    for(int j=0;j<10;j++){vec4 q=Q[j];float age=t-q.z;if(age>0.&&age<3.5){vec2 d=(u-q.xy)*a;float r=length(d);float front=age*.28;
+      float env=exp(-pow((r-front)*7.,2.))*exp(-age*1.1)*q.w;float w=sin((r-front)*70.)*env;o+=normalize(d+1e-5)/a*w*.018;hl+=w*env;}}
+    vec3 col=texture2D(T,cover(u+o)).rgb;
+    float c=caus(u*a*1.1+o*6.,t*.32);col+=c*C*vec3(.75,.95,1.)*(.4+.6*smoothstep(1.,0.,u.y));
+    col+=hl*.09;gl_FragColor=vec4(col,1.);}`;
+  function waterGL(canvas){
+    const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false, preserveDrawingBuffer: false });
+    if (!gl) return;
+    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null; };
+    const vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS);
+    if (!vs || !fs) return;
+    const pr = gl.createProgram(); gl.attachShader(pr, vs); gl.attachShader(pr, fs); gl.linkProgram(pr);
+    if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
+    gl.useProgram(pr);
+    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const U = n => gl.getUniformLocation(pr, n);
+    const uR = U('R'), uI = U('I'), uP = U('P'), ut = U('t'), uC = U('C'), uQ = U('Q');
+    const pos = (canvas.dataset.pos || '0.5,0.5').split(',').map(Number);
+    gl.uniform2f(uP, pos[0], 1 - pos[1]);
+    gl.uniform1f(uC, reduce ? 0 : parseFloat(canvas.dataset.caustic || '0.2'));
+    const ripples = new Float32Array(40); let rIdx = 0;
+    const img = new Image();
+    img.onload = () => {
+      const tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
+      [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(p => gl.texParameteri(gl.TEXTURE_2D, p, gl.CLAMP_TO_EDGE));
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.uniform2f(uI, img.naturalWidth, img.naturalHeight);
+      resize(); draw(performance.now()); canvas.classList.add('ready');
+    };
+    img.src = canvas.dataset.src;
+    const host = canvas.parentElement;
+    function resize(){ const d = Math.min(devicePixelRatio || 1, 1.5); const w = host.clientWidth, h = host.clientHeight; canvas.width = Math.max(1, w*d|0); canvas.height = Math.max(1, h*d|0); gl.viewport(0,0,canvas.width,canvas.height); gl.uniform2f(uR, w, h); }
+    addEventListener('resize', resize);
+    const t0 = performance.now(); const now = () => (performance.now() - t0) / 1000;
+    const drop = (x, y, s) => { ripples.set([x, y, now(), s], rIdx * 4); rIdx = (rIdx + 1) % 10; };
+    let lastDrop = 0;
+    host.addEventListener('pointermove', e => {
+      const r = host.getBoundingClientRect(), n = performance.now();
+      if (n - lastDrop < 90) return; lastDrop = n;
+      drop((e.clientX - r.left) / r.width, 1 - (e.clientY - r.top) / r.height, 0.55);
+    }, { passive: true });
+    host.addEventListener('pointerdown', e => { const r = host.getBoundingClientRect(); drop((e.clientX - r.left)/r.width, 1 - (e.clientY - r.top)/r.height, 1.4); });
+    let visible = false, raf = 0, ambient = 0;
+    function draw(){
+      const s = now();
+      if (!reduce && s - ambient > 2.6) { ambient = s; drop(0.15 + Math.random()*0.7, 0.1 + Math.random()*0.5, 0.8); }
+      gl.uniform1f(ut, reduce ? 0 : s); gl.uniform4fv(uQ, ripples); gl.drawArrays(gl.TRIANGLES, 0, 6);
+      if (visible && !reduce) raf = requestAnimationFrame(draw);
+    }
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; cancelAnimationFrame(raf); if (visible && img.complete && img.naturalWidth) raf = requestAnimationFrame(draw); }).observe(host);
+  }
+  $$('canvas.water-gl').forEach(c => { try { waterGL(c); } catch (e) {} });
+
+  const waves = $$('.wave-reveal').map(el => ({ el, p: reduce ? 1 : 0 }));
+  function waveTick(t){
+    for (const w of waves) {
+      const r = w.el.getBoundingClientRect(), vh = innerHeight;
+      if (r.bottom < -50 || r.top > vh + 50) continue;
+      const target = reduce ? 1 : Math.min(1, Math.max(0, (vh * 0.98 - r.top) / (vh * 0.55)));
+      w.p += (target - w.p) * 0.12;
+      if (w.p > 0.995) { w.el.style.clipPath = 'none'; continue; }
+      const amp = 4 * (1 - w.p), level = 104 - w.p * 112, pts = [];
+      for (let i = 0; i <= 24; i++) { const x = i / 24 * 100; pts.push(`${x}% ${(level + Math.sin(i * 0.7 + t * 0.003) * amp + Math.sin(i * 0.31 - t * 0.002) * amp * .6).toFixed(2)}%`); }
+      w.el.style.clipPath = `polygon(0% 100%, ${pts.join(',')}, 100% 100%)`;
+    }
+  }
+
+  const loop = t => { depthTick(); if (!reduce) drawBubbles(); waveTick(t); requestAnimationFrame(loop); };
+  measure(); requestAnimationFrame(loop);
+  addEventListener('resize', () => { sizeCanvas(); measure(); });
+  addEventListener('load', measure);
+
+  const track = $('#evTrack'), prev = $('#evPrev'), next = $('#evNext');
+  const step = () => { const c = track.querySelector('.ev'); return c ? c.getBoundingClientRect().width + 22 : 300; };
+  const sync = () => { prev.disabled = track.scrollLeft < 8; next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 8; };
+  prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+  track.addEventListener('scroll', sync, { passive: true }); addEventListener('resize', sync); sync();
+
+  const counters = $$('[data-count]');
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return; io.unobserve(en.target);
+    const el = en.target, end = +el.dataset.count, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+    if (reduce) return;
+    const t0 = performance.now(), dur = 1600;
+    const run = n => { const k = Math.min(1, (n - t0) / dur), e = 1 - Math.pow(1 - k, 4); el.textContent = pre + Math.round(end * e) + suf; if (k < 1) requestAnimationFrame(run); };
+    requestAnimationFrame(run);
+  }), { threshold: 0.6 });
+  counters.forEach(c => io.observe(c));
+
+  if (!hasGsap || reduce) return;
+
+  const split = el => {
+    const walk = node => {
+      [...node.childNodes].forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const i = document.createElement('span'); i.className = 'wi'; i.textContent = part;
+            w.appendChild(i); frag.appendChild(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) walk(n);
+      });
+    };
+    walk(el);
+    return $$('.wi', el);
+  };
+
+  const heroWords = split($('#heroTitle'));
+  const intro = gsap.timeline({ defaults: { ease: 'expo.out' } });
+  intro.fromTo('#heroFrame', { clipPath: 'inset(6% 5% 6% 5% round 40px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', duration: 1.6, ease: 'expo.inOut', clearProps: 'clipPath' })
+       .from('#heroFrame .hero-img, #heroFrame .water-gl', { scale: 1.18, duration: 2.2 }, 0)
+       .from(heroWords, { yPercent: 115, rotate: 4, duration: 1.2, stagger: 0.06 }, 0.55)
+       .from('#heroFrame .lede, #heroFrame .btns, #heroFrame .proof', { y: 26, opacity: 0, duration: 1, stagger: 0.08 }, 0.9);
+
+  gsap.to('#heroFrame .hero-content', { yPercent: -14, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '#heroFrame', start: 'top top', end: 'bottom top', scrub: true } });
+
+  $$('.split').forEach(h => {
+    if (h.id === 'heroTitle') return;
+    const words = split(h);
+    gsap.from(words, { yPercent: 115, rotate: 3, duration: 1.1, ease: 'expo.out', stagger: 0.045, scrollTrigger: { trigger: h, start: 'top 88%' } });
+  });
+  $$('[data-reveal]').forEach(el => gsap.from(el, { y: 34, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 90%' } }));
+  $$('[data-stagger]').forEach(el => gsap.from(el.children, { ...(el.id === 'evTrack' ? { x: 90 } : { y: 50 }), opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: el, start: 'top 86%' } }));
+
+  $$('[data-parallax]').forEach(f => {
+    const img = f.querySelector('img');
+    gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: f, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 761px)', () => {
+    const lanes = $$('.lane');
+    lanes.forEach((lane, i) => {
+      if (i === lanes.length - 1) return;
+      const st = { trigger: lanes[i + 1], start: 'top 92%', end: () => 'top ' + (96 + (i + 1) * 18) + 'px', scrub: true };
+      gsap.to(lane, { scale: 1 - (lanes.length - 1 - i) * 0.035, ease: 'none', scrollTrigger: st });
+      gsap.to(lane.querySelector('.lane-dim'), { opacity: 0.45, ease: 'none', scrollTrigger: { ...st } });
+    });
+  });
+
+  mm.add('(min-width: 901px)', () => {
+    const strip = $('#strip');
+    const dist = () => Math.max(0, strip.scrollWidth - innerWidth + 40);
+    const tw = gsap.to(strip, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '#galPin', start: 'top top+=40', end: () => '+=' + dist(), pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1 } });
+    $$('#strip figure').forEach((f, i) => gsap.to(f, { y: (i % 2 ? -1 : 1) * 30, rotate: (i % 2 ? -1 : 1) * 1.2, ease: 'none', scrollTrigger: { trigger: '#galPin', start: 'top top+=40', end: () => '+=' + dist(), scrub: 1.5 } }));
+    $$('#strip figure img').forEach(img => gsap.fromTo(img, { xPercent: 6 }, { xPercent: -6, ease: 'none', scrollTrigger: { trigger: '#galPin', start: 'top top+=40', end: () => '+=' + dist(), scrub: true } }));
+    return () => tw.kill();
+  });
+
+  const floor = $('#floor');
+  floor.style.setProperty('--fill', 0);
+  ScrollTrigger.create({ trigger: floor, start: 'top 65%', end: 'bottom 60%', scrub: true, onUpdate: s => floor.style.setProperty('--fill', s.progress.toFixed(4)) });
+  $$('.step').forEach(s => ScrollTrigger.create({ trigger: s, start: 'top 62%', end: 'bottom 40%', toggleClass: 'on' }));
+  $$('.step').forEach(s => gsap.from(s, { x: 60, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: s, start: 'top 88%' } }));
+
+  gsap.from('#deepFrame .cta .btns, #deepFrame .cta .lede', { y: 30, opacity: 0, duration: 1, stagger: 0.08, ease: 'expo.out', scrollTrigger: { trigger: '#deepFrame', start: 'top 70%' } });
+
+  ScrollTrigger.addEventListener('refresh', measure);
+  addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+
+</body>
+</html>
